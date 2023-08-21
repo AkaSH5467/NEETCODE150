@@ -1,0 +1,42 @@
+/*******************************Aprroach 1************************************/
+using array
+class Solution {
+public:
+    bool containsDuplicate(vector<int>& nums) {
+        int n = nums.size();
+        sort(nums.begin(),nums.end());
+        for(int i=1;i<n;i++){
+            if(nums[i]==nums[i-1])
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+};
+
+//**********************************Approach 2********************************/
+using maps
+
+class Solution {
+public:
+    bool containsDuplicate(vector<int>& nums) {
+        map<int,int>mp;
+        for(auto i:nums)
+        {
+            mp[i]++;
+        }
+
+        for( auto i : mp)
+        {
+            if(i.second>=2)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+};
