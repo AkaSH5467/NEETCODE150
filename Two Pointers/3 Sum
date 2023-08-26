@@ -1,0 +1,49 @@
+/*
+Sort
+binary search
+insert in set vector
+insert in 2d matrix
+return*/
+
+
+
+class Solution {
+public:
+    vector<vector<int>> threeSum(vector<int>& nums) {
+        set<vector<int>>s;
+        vector<vector<int>>ans;
+        int target=0;
+        sort(nums.begin(),nums.end());
+        for(int i=0;i<nums.size();i++)
+        {
+            int high=nums.size()-1;
+            int low=i+1;
+            while(low<high)
+            {
+                int curr = nums[i]+nums[low]+nums[high];
+
+                if(curr==target)
+                {
+                    s.insert({nums[i],nums[low],nums[high]});
+                    low++;
+                    high--;
+                }
+                else if(curr<target)
+                {
+                    low++;
+                }
+                else{
+                    high--;
+                }
+            }
+
+        }
+
+        for(auto i : s)
+        {
+            ans.push_back(i);
+        }
+
+        return ans;
+    }
+};
