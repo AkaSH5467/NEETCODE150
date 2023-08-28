@@ -1,0 +1,15 @@
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int min_id = prices[0];                       //minimum number
+        int ans = 0;
+
+        for(int i=1;i<prices.size();i++)
+        {
+            ans = max(ans,prices[i]-min_id);      // taking the maximum difference
+            min_id = min(min_id,prices[i]);       // finding the even minimum number
+        }
+
+        return ans;                              
+    }
+};
